@@ -22,3 +22,5 @@ async function init(){
 console.log("URL for graphql.jpeg", await getObjectUrl("graphql.jpeg"))
 }
 
+init();
+
