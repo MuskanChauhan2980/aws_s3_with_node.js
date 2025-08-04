@@ -1,7 +1,8 @@
 const { S3Client,
     GetObjectCommand,
     putObjectUrl,
-    ListObjectsV2Command } = require("@aws-sdk/client-s3");
+    ListObjectsV2Command,
+    DeleteObjectCommand } = require("@aws-sdk/client-s3");
 const { getSignedUrl } = require("@aws-sdk/s3-request-presigner");
 
 const s3Client = new S3Client({
@@ -31,6 +32,22 @@ async function putObjectUrl(fielName, contentType) {
     const url = await getSignedUrl(s3Client, command);
     return url;
 }
+async function listObject() {
+    const command = new ListObjectsV2Command({
+        Bucket: "BucketName-private",
+        Key: '/'
+    })
+    const result = await s3Client.send(command);
+    console.log(result);
+}
+
+async function deleteKey() {
+    const command = new DeleteObjectCommand({
+        Bucket: "BucketName",
+        Key: "File_Name"
+    })
+    await s3Client.send(command);
+}
 
 async function init() {
     console.log("URL for graphql.jpeg", await getObjectUrl("graphql.jpeg"))
@@ -38,9 +55,17 @@ async function init() {
 async function initPutObjectUrl() {
     console.log("URL for uploading", await putObjectUrl(`image-${Date.now()}.jpeg`, "imge/jpeg"))
 }
+async function initListObject() {
+    console.log("List of all files in this bucket", await listObject())
+}
+async function initDeleteFile() {
+    console.log("Delete a file from this bucket", await deleteKey())
+}
 
 init();
 initPutObjectUrl();
+initListObject();
+initDeleteFile();
 
 
 
