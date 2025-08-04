@@ -1,0 +1,23 @@
+{
+  "name": "aws_s3_with_node",
+  "version": "1.0.0",
+  "description": "Private S3 bucket using PreSigned URLs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MuskanChauhan2980/aws_s3_with_node.js.git"
+  },
+  "author": "Muskan Chauhan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MuskanChauhan2980/aws_s3_with_node.js/issues"
+  },
+  "homepage": "https://github.com/MuskanChauhan2980/aws_s3_with_node.js#readme",
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.859.0",
+    "@aws-sdk/s3-request-presigner": "^3.859.0"
+  }
+}
