@@ -37,3 +37,28 @@ async function generateDownloadUrl(key){
     const url= await getSignedUrl(s3Client,command,{expiresIn:3600})
     return url;
 }
+
+async function listFiles(){
+    const command= new ListObjectsV2Command({
+        Bucket:process.env.AWS_BUCKET_NAME,
+    })
+    const result=await s3Client.send(command);
+    return result.Contents ||[];
+}
+
+
+async function deleteFile(key){
+    const command= new DeleteObjectCommand({
+        Bucket:process.env.AWS_BUCKET_NAME,
+        Key:key
+    });
+    await s3Client.send(command);
+}
+
+
+module.exports={
+    generateDownloadUrl,
+    generateUploadUrl,
+    listFiles,
+    deleteFile
+}
