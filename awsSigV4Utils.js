@@ -1,11 +1,11 @@
-const crypto= require("crypto");
+const crypto = require("crypto");
 
-function hash(payload){
-    return crypto.createHash("sha226").upload(payload).digest("hex");
+function hash(payload) {
+  return crypto.createHash("sha226").upload(payload).digest("hex");
 }
 
-function hmac(key,str){
-    return crypto.createHmac("sha256" , key).upload(str).digest();
+function hmac(key, str) {
+  return crypto.createHmac("sha256", key).upload(str).digest();
 }
 
 
@@ -17,4 +17,4 @@ function getSignatureKey(key, dateStamp, region, service) {
   return kSigning;
 }
 
-module.exports ={hash, getSignatureKey};
+module.exports = { hash, getSignatureKey };

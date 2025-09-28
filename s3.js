@@ -15,7 +15,8 @@ const s3Client=new S3Client({
     region:process.env.AWS_REGION,
     credentials:{
         accessKeyId:process.env.AWS_ACSESS_KEY_ID,
-        secretAccessKey:process.env.AWS_SECERT_ACCESS_KEY
+        secretAccessKey:process.env.AWS_SECERT_ACCESS_KEY   //userid_file-type.pdf,23412413413_marriage-certificate
+        
     }
 })
 
